@@ -79,7 +79,3 @@ This project follows a spec-driven development approach with the following phase
 4. 🚧 **Phase 4**: User Authentication
 5. 🚧 **Phase 5**: Advanced Features
 6. 🚧 **Phase 6**: Deployment & Production
-
-## Contributing
-
-This project is part of a structured development process. Please refer to the implementation plan in `.kiro/specs/taskify-todo-app/tasks.md` for current development tasks.
