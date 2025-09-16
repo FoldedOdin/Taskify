@@ -61,7 +61,7 @@ const TodoItem = ({ todo, onToggleComplete, onDeleteTodo, onUpdateTodo }) => {
 
       <button
         onClick={() => onDeleteTodo(todo.id)}
-        className="px-3 py-1 text-red-600 hover:bg-red-50 rounded transition-colors"
+        className="px-3 py-1 text-red-600 bg-red-50 hover:bg-red-600 hover:text-white rounded transition-colors"
         title="Delete task"
       >
         Delete
