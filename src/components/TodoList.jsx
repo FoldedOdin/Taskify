@@ -37,15 +37,11 @@ const TodoList = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-        Taskify
-      </h1>
-
       <AddTodo onAddTodo={addTodo} />
 
       <div className="space-y-2">
         {todos.length === 0 ? (
-          <div className="text-center py-8 text-gray-500">
+          <div className="text-center py-8 text-gray-500 dark:text-gray-400 transition-colors duration-200">
             No tasks yet. Add one above to get started!
           </div>
         ) : (
@@ -62,7 +58,7 @@ const TodoList = () => {
       </div>
 
       {todos.length > 0 && (
-        <div className="mt-6 text-sm text-gray-600 text-center">
+        <div className="mt-6 text-sm text-gray-600 dark:text-gray-400 text-center transition-colors duration-200">
           {todos.filter(todo => !todo.completed).length} of {todos.length} tasks
           remaining
         </div>
