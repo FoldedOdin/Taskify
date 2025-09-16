@@ -2,11 +2,9 @@ import mongoose from 'mongoose';
 
 const connectDB = async () => {
   try {
-    const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/taskify';
+    const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://FoldedOdin:TAtiBqjlTU6qNnhr@taskify-dev.iughnvz.mongodb.net/?retryWrites=true&w=majority&appName=taskify-dev';
     
     const conn = await mongoose.connect(mongoURI, {
-      // These options are no longer needed in Mongoose 6+
-      // but keeping them for compatibility if using older versions
     });
 
     console.log(`📦 MongoDB Connected: ${conn.connection.host}`);

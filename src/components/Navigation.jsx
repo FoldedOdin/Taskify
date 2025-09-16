@@ -4,47 +4,46 @@ import SignupModal from './SignupModal';
 
 const Navigation = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Check if user has a saved preference or default to system preference
     const saved = localStorage.getItem('darkMode');
-    console.log('Initial load - saved preference:', saved);
     if (saved !== null) {
-      const parsed = JSON.parse(saved);
-      console.log('Using saved preference:', parsed);
-      return parsed;
+      return JSON.parse(saved);
     }
-    const systemPref = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    console.log('Using system preference:', systemPref);
-    return systemPref;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
 
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
 
+  // Ensure the HTML class reflects current preference on mount (and avoid desync)
   useEffect(() => {
-    console.log('Dark mode changed to:', isDarkMode);
-    // Save preference to localStorage
-    localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
-    
-    // Apply dark mode class to document
+    const apply = (dark) => {
+      if (dark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      localStorage.setItem('darkMode', JSON.stringify(dark));
+    };
+    apply(isDarkMode);
+  }, []);
+
+  // Keep class and storage in sync when state changes
+  useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
-      console.log('Added dark class to document');
     } else {
       document.documentElement.classList.remove('dark');
-      console.log('Removed dark class from document');
     }
-    
-    // Log current classes on document
-    console.log('Document classes:', document.documentElement.className);
+    localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
   }, [isDarkMode]);
 
   const toggleDarkMode = () => {
-    console.log('Toggle clicked! Current mode:', isDarkMode);
-    setIsDarkMode(prevMode => {
-      const newMode = !prevMode;
-      console.log('Switching to:', newMode ? 'dark' : 'light');
-      return newMode;
-    });
+    // Toggle the class first to be the single source of truth
+    const root = document.documentElement;
+    root.classList.toggle('dark');
+    const nowDark = root.classList.contains('dark');
+    setIsDarkMode(nowDark);
+    localStorage.setItem('darkMode', JSON.stringify(nowDark));
   };
 
   // Add keyboard shortcut for dark mode toggle (Ctrl/Cmd + D)
