@@ -29,8 +29,31 @@ const TodoItem = ({ todo, onToggleComplete, onDeleteTodo, onUpdateTodo }) => {
     }
   };
 
+  const now = new Date();
+  const dueAt = todo.dueAt ? new Date(todo.dueAt) : null;
+  const formatDateDMY = (d) => {
+    const dd = String(d.getDate()).padStart(2, '0');
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const yyyy = d.getFullYear();
+    return `${dd}/${mm}/${yyyy}`;
+  };
+  const formatDateTimeDMY = (d) => `${formatDateDMY(d)} ${d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+  const isOverdue = dueAt ? dueAt < now && !todo.completed : false;
+  const isDueSoon = dueAt ? dueAt >= now && (dueAt - now) / (1000 * 60 * 60) <= 24 && !todo.completed : false;
+
   return (
-    <div className="flex items-center gap-3 p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all duration-200">
+    <div
+      className={`flex items-center gap-3 p-3 rounded-lg shadow-sm border hover:shadow-md transition-all duration-200 ${
+      isOverdue
+        ? 'bg-red-50 dark:bg-red-900/20 border-red-300 dark:border-red-800'
+        : isDueSoon
+        ? 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-300 dark:border-yellow-800'
+        : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700'
+    }`}
+      title={`Created: ${formatDateTimeDMY(new Date(todo.createdAt))}${
+        todo.completedAt ? `\nCompleted: ${formatDateTimeDMY(new Date(todo.completedAt))}` : ''
+      }`}
+    >
       <input
         type="checkbox"
         checked={todo.completed}
@@ -59,6 +82,12 @@ const TodoItem = ({ todo, onToggleComplete, onDeleteTodo, onUpdateTodo }) => {
         >
           {todo.text}
         </span>
+      )}
+
+      {dueAt && (
+        <div className="text-xs text-gray-600 dark:text-gray-400 whitespace-nowrap" title={`Due: ${formatDateTimeDMY(dueAt)}`}>
+          Due: {formatDateDMY(dueAt)} {dueAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+        </div>
       )}
 
       <button
