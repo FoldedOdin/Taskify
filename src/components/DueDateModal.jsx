@@ -1,49 +1,126 @@
 import React, { useState, useEffect } from 'react';
 
+const DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+
+const clampToLocalInput = (date) => {
+  const d = new Date(date);
+  const local = new Date(d.getTime() - d.getTimezoneOffset() * 60000)
+    .toISOString()
+    .slice(0, 16);
+  return local;
+};
+
+const toISO = (year, monthIndex, day, hour12, minute, period) => {
+  let h = hour12 % 12;
+  if (period === 'PM') h += 12;
+  const dt = new Date(year, monthIndex, day, h, minute, 0, 0);
+  return dt.toISOString();
+};
+
+const isPast = (year, monthIndex, day, hour12, minute, period) => {
+  const iso = toISO(year, monthIndex, day, hour12, minute, period);
+  const dt = new Date(iso);
+  return dt.getTime() < Date.now();
+};
+
+const generateMonthGrid = (year, monthIndex) => {
+  const first = new Date(year, monthIndex, 1);
+  const startDay = first.getDay();
+  const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+  const prevMonthDays = new Date(year, monthIndex, 0).getDate();
+
+  const cells = [];
+  // Leading days
+  for (let i = 0; i < startDay; i++) {
+    cells.push({
+      day: prevMonthDays - startDay + 1 + i,
+      current: false,
+    });
+  }
+  // Current month days
+  for (let d = 1; d <= daysInMonth; d++) {
+    cells.push({ day: d, current: true });
+  }
+  // Trailing to complete 6 rows * 7 cols = 42 cells
+  while (cells.length % 7 !== 0 || cells.length < 42) {
+    cells.push({ day: cells.length - (startDay + daysInMonth) + 1, current: false });
+  }
+  return cells;
+};
+
 const DueDateModal = ({ isOpen, initialValue, onCancel, onSave }) => {
-  const [dateTime, setDateTime] = useState('');
+  const now = new Date();
+  const init = initialValue ? new Date(initialValue) : now;
+
+  const [viewYear, setViewYear] = useState(init.getFullYear());
+  const [viewMonth, setViewMonth] = useState(init.getMonth());
+  const [selectedDay, setSelectedDay] = useState(init.getDate());
+  const [hour, setHour] = useState(() => {
+    const h = init.getHours();
+    const h12 = h % 12 || 12;
+    return h12.toString().padStart(2, '0');
+  });
+  const [minute, setMinute] = useState(init.getMinutes().toString().padStart(2, '0'));
+  const [period, setPeriod] = useState(init.getHours() >= 12 ? 'PM' : 'AM');
   const [error, setError] = useState('');
 
   useEffect(() => {
     if (isOpen) {
-      if (initialValue) {
-        try {
-          const iso = typeof initialValue === 'string' ? initialValue : initialValue.toISOString();
-          const d = new Date(iso);
-          const local = new Date(d.getTime() - d.getTimezoneOffset() * 60000)
-            .toISOString()
-            .slice(0, 16);
-          setDateTime(local);
-        } catch {
-          setDateTime('');
-        }
-      } else {
-        setDateTime('');
-      }
+      const base = initialValue ? new Date(initialValue) : new Date();
+      setViewYear(base.getFullYear());
+      setViewMonth(base.getMonth());
+      setSelectedDay(base.getDate());
+      const h = base.getHours();
+      const h12 = h % 12 || 12;
+      setHour(h12.toString().padStart(2, '0'));
+      setMinute(base.getMinutes().toString().padStart(2, '0'));
+      setPeriod(h >= 12 ? 'PM' : 'AM');
       setError('');
     }
   }, [isOpen, initialValue]);
 
-  const validate = () => {
-    if (!dateTime) {
-      setError('Please select a date and time');
-      return false;
+  const goPrevMonth = () => {
+    const m = viewMonth - 1;
+    if (m < 0) {
+      setViewMonth(11);
+      setViewYear(viewYear - 1);
+    } else {
+      setViewMonth(m);
     }
-    const ms = Date.parse(dateTime);
-    if (Number.isNaN(ms)) {
-      setError('Invalid date/time');
-      return false;
+    setError('');
+  };
+  const goNextMonth = () => {
+    const m = viewMonth + 1;
+    if (m > 11) {
+      setViewMonth(0);
+      setViewYear(viewYear + 1);
+    } else {
+      setViewMonth(m);
     }
-    return true;
+    setError('');
   };
 
-  const handleSave = () => {
-    if (!validate()) return;
-    const iso = new Date(dateTime).toISOString();
+  const save = () => {
+    // Compose ISO and validate not in past
+    const iso = toISO(parseInt(viewYear), parseInt(viewMonth), parseInt(selectedDay), parseInt(hour, 10), parseInt(minute, 10), period);
+    const dt = new Date(iso);
+    if (Number.isNaN(dt.getTime())) {
+      setError('Invalid date/time');
+      return;
+    }
+    if (dt < new Date()) {
+      setError('Invalid date: selected time is in the past');
+      return;
+    }
     onSave(iso);
   };
 
   if (!isOpen) return null;
+
+  const monthName = new Date(viewYear, viewMonth, 1).toLocaleString(undefined, { month: 'long' });
+  const cells = generateMonthGrid(viewYear, viewMonth);
+  const today = new Date();
+  const isCurrentMonth = viewYear === today.getFullYear() && viewMonth === today.getMonth();
 
   return (
     <div
@@ -51,48 +128,117 @@ const DueDateModal = ({ isOpen, initialValue, onCancel, onSave }) => {
       onClick={onCancel}
     >
       <div
-        className="bg-white dark:bg-gray-800 rounded-lg shadow-xl w-full max-w-sm transform transition-all duration-200"
+        className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-lg transform transition-all duration-200 overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex justify-between items-center px-5 py-4 border-b border-gray-200 dark:border-gray-700">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Select Due Date & Time</h3>
-          <button
-            onClick={onCancel}
-            className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
-            aria-label="Close due date modal"
-          >
+          <button onClick={onCancel} className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300" aria-label="Close due date modal">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
 
-        <div className="p-4 space-y-3">
-          <input
-            type="datetime-local"
-            value={dateTime}
-            onChange={(e) => {
-              setDateTime(e.target.value);
-              if (error) setError('');
-            }}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          {error && <p className="text-sm text-red-600 dark:text-red-400">{error}</p>}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+          {/* Calendar */}
+          <div className="p-4">
+            <div className="flex items-center justify-between mb-3">
+              <button onClick={goPrevMonth} className="p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700" aria-label="Previous month">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7"/></svg>
+              </button>
+              <div className="text-sm font-medium text-gray-900 dark:text-gray-100">{monthName} {viewYear}</div>
+              <button onClick={goNextMonth} className="p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700" aria-label="Next month">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+            <div className="grid grid-cols-7 gap-1 text-xs">
+              {DAYS.map(d => (
+                <div key={d} className="text-center text-gray-500 dark:text-gray-400 py-1">{d}</div>
+              ))}
+            </div>
+            <div className="grid grid-cols-7 gap-1 mt-1">
+              {cells.map((c, i) => {
+                const isSel = c.current && c.day === selectedDay;
+                const isDim = !c.current;
+                const isPastDay = c.current && isCurrentMonth && c.day < today.getDate();
+                const disabled = !c.current || isPastDay;
+                return (
+                  <button
+                    key={i}
+                    onClick={() => {
+                      if (disabled) return;
+                      setSelectedDay(c.day);
+                      // Clear past error when choosing a valid day
+                      setError('');
+                    }}
+                    className={`py-2 text-sm rounded-md transition-colors ${
+                      isSel
+                        ? 'bg-blue-600 text-white'
+                        : disabled
+                        ? 'text-gray-400 dark:text-gray-600'
+                        : 'text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700'
+                    }`}
+                    disabled={disabled}
+                  >
+                    {c.day}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Time picker */}
+          <div className="p-4 border-t md:border-t-0 md:border-l border-gray-200 dark:border-gray-700">
+            <div className="text-sm font-medium text-gray-900 dark:text-gray-100 mb-2">Time</div>
+            <div className="flex items-center gap-2">
+              <input
+                type="number"
+                value={hour}
+                onChange={(e) => setHour(String(Math.min(12, Math.max(1, parseInt(e.target.value || '0', 10)))).padStart(2, '0'))}
+                className="w-16 px-2 py-2 text-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                min={1}
+                max={12}
+              />
+              <span className="text-gray-500 dark:text-gray-400">:</span>
+              <input
+                type="number"
+                value={minute}
+                onChange={(e) => setMinute(String(Math.min(59, Math.max(0, parseInt(e.target.value || '0', 10)))).padStart(2, '0'))}
+                className="w-16 px-2 py-2 text-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                min={0}
+                max={59}
+              />
+              <div className="flex rounded-md overflow-hidden border border-gray-300 dark:border-gray-600">
+                <button
+                  type="button"
+                  onClick={() => setPeriod('AM')}
+                  className={`w-16 px-4 py-2 text-sm text-center ${period === 'AM' ? 'bg-blue-600 text-white' : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200'}`}
+                >
+                  AM
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPeriod('PM')}
+                  className={`w-16 px-4 py-2 text-sm text-center ${period === 'PM' ? 'bg-blue-600 text-white' : 'bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-200'}`}
+                >
+                  PM
+                </button>
+              </div>
+            </div>
+
+            {/* Summary */}
+            <div className="mt-4 text-sm text-gray-600 dark:text-gray-300">
+              Selected: {String(selectedDay).padStart(2, '0')}/
+              {String(viewMonth + 1).padStart(2, '0')}/{viewYear} {hour}:{minute} {period}
+            </div>
+            {error && <p className="mt-2 text-sm text-red-600 dark:text-red-400">{error}</p>}
+          </div>
         </div>
 
-        <div className="p-4 pt-0 flex justify-end gap-2">
-          <button
-            onClick={onCancel}
-            className="px-4 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={handleSave}
-            className="px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white"
-          >
-            Save
-          </button>
+        <div className="px-5 py-4 flex justify-end gap-2 border-t border-gray-200 dark:border-gray-700">
+          <button onClick={onCancel} className="px-4 py-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Cancel</button>
+          <button onClick={save} className="px-4 py-2 rounded-md bg-blue-600 hover:bg-blue-700 text-white">Save</button>
         </div>
       </div>
     </div>
