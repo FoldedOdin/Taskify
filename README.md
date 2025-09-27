@@ -19,7 +19,7 @@
 
 ## 🎬 **Taskify Demo Video**
 
-[![Taskify Demo Video](https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=YOUR_YOUTUBE_VIDEO_ID)
+[![Taskify Demo Video](https://img.youtube.com/vi/SCdUU92PFUw/maxresdefault.jpg)](https://youtu.be/SCdUU92PFUw)
 
 *🎥 Click above to watch the full demo on YouTube*
 
