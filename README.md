@@ -353,6 +353,6 @@ Special thanks to the amazing open source community and these fantastic projects
 
 [![Star History Chart](https://api.star-history.com/svg?repos=FoldedOdin/Taskify&type=Timeline)](https://star-history.com/#FoldedOdin/Taskify&Timeline)
 
-[![🚀 Return to Top](https://img.shields.io/badge/🚀%20Return%20to-Mission%20HQ-FF6B6B?style=for-the-badge&labelColor=4ECDC4)](#-TASKIFY)
+[![🚀 Return To TOP](https://img.shields.io/badge/🚀%20Return%20to-%20TOP-FF6B6B?style=for-the-badge&labelColor=4ECDC4)](#taskify)
 
 </div>
