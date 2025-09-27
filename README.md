@@ -5,7 +5,7 @@
 **Transform Tasks Into Triumphs Every Day**
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
-[![Last Commit](https://img.shields.io/github/last-commit/yourusername/taskify)](https://github.com/FoldedOdin/Taskify)
+[![Last Commit](https://img.shields.io/github/last-commit/FoldedOdin/Taskify)](https://github.com/FoldedOdin/Taskify)
 [![JavaScript](https://img.shields.io/badge/JavaScript-99.7%25-yellow.svg)](https://github.com/FoldedOdin/Taskify)
 [![Languages](https://img.shields.io/badge/Languages-3-blue.svg)](https://github.com/FoldedOdin/Taskify)
 [![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)](https://github.com/FoldedOdin/Taskify)
@@ -276,9 +276,9 @@ We love contributions! Please read our contributing guidelines before getting st
 
 <div align="center">
 
-[![Contributors](https://img.shields.io/github/contributors/yourusername/taskify)](https://github.com/yourusername/taskify/graphs/contributors)
-[![Issues](https://img.shields.io/github/issues/yourusername/taskify)](https://github.com/yourusername/taskify/issues)
-[![Pull Requests](https://img.shields.io/github/issues-pr/yourusername/taskify)](https://github.com/yourusername/taskify/pulls)
+[![Contributors](https://img.shields.io/github/contributors/FoldedOdin/Taskify)](https://github.com/FoldedOdin/Taskify/graphs/contributors)
+[![Issues](https://img.shields.io/github/issues/FoldedOdin/Taskify)](https://github.com/FoldedOdin/Taskify/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/FoldedOdin/Taskify)](https://github.com/FoldedOdin/Taskify/pulls)
 
 </div>
 
