@@ -20,8 +20,7 @@
     "test:e2e:headed": "playwright test --headed",
     "predeploy": "npm run lint && npm run test:run && npm run build:prod",
     "deploy": "echo 'Deploy to your hosting platform'",
-    "start": "node server.js",
-    "start:prod": "NODE_ENV=production node server.js" 
+    "start": "npm run preview"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
