@@ -306,13 +306,6 @@ We love contributions! Please read our contributing guidelines before getting st
 4. 📤 Push to the branch (`git push origin feature/amazing-feature`)
 5. 📥 Open a Pull Request
 
-## 📊 Stats & Analytics
-
-<div align="center">
-
-![Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=FoldedOdin&layout=compact&theme=dark)
-
-</div>
 
 ## 📄 License
 
@@ -360,6 +353,6 @@ Special thanks to the amazing open source community and these fantastic projects
 
 [![Star History Chart](https://api.star-history.com/svg?repos=FoldedOdin/Taskify&type=Timeline)](https://star-history.com/#FoldedOdin/Taskify&Timeline)
 
-### [📑 Return to Top](#-taskify)
+[![🚀 Return to Top](https://img.shields.io/badge/🚀%20Return%20to-Mission%20HQ-FF6B6B?style=for-the-badge&labelColor=4ECDC4)](#-TASKIFY)
 
 </div>
