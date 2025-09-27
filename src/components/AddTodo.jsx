@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import DueDateModal from './DueDateModal';
+import LoadingButton from './LoadingButton';
 
-const AddTodo = ({ onAddTodo }) => {
+const AddTodo = ({ onAddTodo, loading = false }) => {
   const [text, setText] = useState('');
   const [dueDateTime, setDueDateTime] = useState('');
+  const [tags, setTags] = useState([]);
   const [isDueModalOpen, setIsDueModalOpen] = useState(false);
   const [submitAfterDue, setSubmitAfterDue] = useState(false);
 
@@ -16,23 +18,26 @@ const AddTodo = ({ onAddTodo }) => {
       return;
     }
     const dueAt = new Date(dueDateTime).toISOString();
-    onAddTodo(text.trim(), dueAt);
+    onAddTodo(text.trim(), dueAt, tags);
     setText('');
     setDueDateTime('');
+    setTags([]);
     setSubmitAfterDue(false);
   };
 
   const openDueModal = () => setIsDueModalOpen(true);
   const closeDueModal = () => setIsDueModalOpen(false);
-  const saveDueModal = (iso) => {
+  const saveDueModal = (iso, selectedTags = []) => {
     setDueDateTime(iso);
+    setTags(selectedTags);
     setIsDueModalOpen(false);
     // If user clicked Add Task and we were waiting for due date, auto-submit now
     if (submitAfterDue && text.trim()) {
       const dueAt = new Date(iso).toISOString();
-      onAddTodo(text.trim(), dueAt);
+      onAddTodo(text.trim(), dueAt, selectedTags);
       setText('');
       setDueDateTime('');
+      setTags([]);
       setSubmitAfterDue(false);
     }
   };
@@ -47,16 +52,19 @@ const AddTodo = ({ onAddTodo }) => {
           placeholder="Add a new task..."
           className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 transition-colors duration-200"
         />
-        <button
+        <LoadingButton
           type="submit"
-          className="px-6 py-2 bg-blue-500 dark:bg-blue-600 text-white rounded-lg hover:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition-colors duration-200"
+          loading={loading}
+          loadingText="Adding..."
+          disabled={!text.trim() || loading}
         >
           Add Task
-        </button>
+        </LoadingButton>
       </div>
       <DueDateModal
         isOpen={isDueModalOpen}
         initialValue={dueDateTime}
+        initialTags={tags}
         onCancel={closeDueModal}
         onSave={saveDueModal}
       />

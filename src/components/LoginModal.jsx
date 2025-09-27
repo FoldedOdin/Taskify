@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { useAuth } from '../context/AuthContext';
+import { useToast } from '../context/ToastContext';
 
 const LoginModal = ({ isOpen, onClose }) => {
+  const { login, loading, error, clearError } = useAuth();
+  const { showSuccess, showError } = useToast();
   const [formData, setFormData] = useState({
     usernameOrEmail: '',
     password: ''
@@ -38,20 +42,31 @@ const LoginModal = ({ isOpen, onClose }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (validateForm()) {
-      // TODO: Implement login functionality
-      console.log('Login data:', formData);
-      alert('Login functionality will be implemented!');
-      onClose();
+      const result = await login(formData.usernameOrEmail, formData.password);
+      
+      if (result.success) {
+        // Show success notification
+        showSuccess('Welcome back! You have successfully logged in.');
+        
+        // Clear form and close modal on successful login
+        setFormData({ usernameOrEmail: '', password: '' });
+        setErrors({});
+        onClose();
+      } else {
+        // Show error notification
+        showError(result.error || 'Login failed. Please try again.');
+      }
     }
   };
 
   const handleClose = () => {
     setFormData({ usernameOrEmail: '', password: '' });
     setErrors({});
+    clearError(); // Clear any auth errors
     onClose();
   };
 
@@ -127,13 +142,31 @@ const LoginModal = ({ isOpen, onClose }) => {
             )}
           </div>
 
+          {/* Authentication Error */}
+          {error && (
+            <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md">
+              <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+            </div>
+          )}
+
           {/* Submit Button */}
           <div className="pt-4">
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+              disabled={loading}
+              className="w-full bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 disabled:bg-blue-400 disabled:cursor-not-allowed text-white font-medium py-2 px-4 rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 flex items-center justify-center"
             >
-              Login
+              {loading ? (
+                <>
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Logging in...
+                </>
+              ) : (
+                'Login'
+              )}
             </button>
           </div>
         </form>

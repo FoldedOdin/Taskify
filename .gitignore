@@ -31,4 +31,63 @@ dist-ssr
 *.swo
 *.iml
 .kiro/*
+
+# Environment and Security Files
 .env
+.env.*
+server/.env
+server/.env.*
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# Log Files
+log/
+logs/
+*.log
+*.log.*
+
+# Test Files (not needed in production)
+**/__tests__/
+**/*.test.js
+**/*.test.jsx
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.js
+**/*.spec.jsx
+**/*.spec.ts
+**/*.spec.tsx
+coverage/
+.nyc_output/
+jest.config.*
+vitest.config.*
+
+# Documentation with sensitive info
+PRODUCTION_SECURITY.md
+SECURITY_IMPLEMENTATION.md
+FRONTEND_CLEANUP.md
+PRE_COMMIT_SECURITY_CHECKLIST.md
+TAGS_SYSTEM.md
+
+# Build and Cache
+build/
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vuepress/dist/
+.serverless/
+.fusebox/
+.dynamodb/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+tmp/
+temp/
+.tmp/
