@@ -16,8 +16,8 @@
 
 ## 🌟 About
 
-A **modern, full-stack todo application** with comprehensive task management features, built with React, Express.js, and MongoDB. Designed for productivity enthusiasts who demand more from their task management tools.
-Check it Out: [![Taskify](https://taskify-todo-list.netlify.app)]
+A **modern, full-stack todo application** with comprehensive task management features, built with React, Express.js, and MongoDB. Designed for productivity enthusiasts who demand more from their task management tools. 
+- **Check it Out:** [![Taskify](https://taskify-todo-list.netlify.app)]
 
 ## ✨ Features
 
