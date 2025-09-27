@@ -2,6 +2,7 @@
 
 # TASKIFY
 
+
 **Transform Tasks Into Triumphs Every Day**
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
@@ -14,10 +15,25 @@
 
 </div>
 
+<div align="center">
+
+## 🎬 **Taskify Demo Video**
+
+[![Taskify Demo Video](https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=YOUR_YOUTUBE_VIDEO_ID)
+
+*🎥 Click above to watch the full demo on YouTube*
+
+---
+
+### 🚀 **Ready to Try It Yourself?**
+
+[![Launch Live App](https://img.shields.io/badge/🚀%20Launch%20Live%20App-taskify--todo--list.netlify.app-success?style=for-the-badge&logo=rocket)](https://taskify-todo-list.netlify.app)
+
+</div>
 ## 🌟 About
 
 A **modern, full-stack todo application** with comprehensive task management features, built with React, Express.js, and MongoDB. Designed for productivity enthusiasts who demand more from their task management tools. 
-- **Check it Out:** [![Taskify](https://taskify-todo-list.netlify.app)]
+- **Check it Out:** https://taskify-todo-list.netlify.app
 
 ## ✨ Features
 
