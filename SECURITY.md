@@ -53,7 +53,7 @@ We take security vulnerabilities seriously and appreciate responsible disclosure
 
 Instead, please report security vulnerabilities by:
 
-1. **Email**: Send details to [security@taskify.com] (if available)
+1. **Email**: Send details to [karthikkpradeep422@gmail.com]
 2. **GitHub Security Advisories**: Use GitHub's private vulnerability reporting feature
 3. **Direct Contact**: Contact the maintainers directly through secure channels
 
