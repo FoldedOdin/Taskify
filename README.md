@@ -257,7 +257,6 @@ npm run test:watch
 
 ### Backend Deployment
 [![Heroku Status](https://img.shields.io/badge/Heroku-Ready-430098?logo=heroku&logoColor=white)](https://heroku.com)
-[![Railway Status](https://img.shields.io/badge/Railway-Ready-0B0D0E?logo=railway&logoColor=white)](https://railway.app)
 
 ```bash
 # Build for production
