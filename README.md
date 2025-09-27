@@ -342,7 +342,7 @@ Special thanks to the amazing open source community and these fantastic projects
 
 ### ⭐ If you found this project helpful, please give it a star!
 
-[![Star History Chart](https://api.star-history.com/svg?repos=yourusername/taskify&type=Timeline)](https://star-history.com/#yourusername/taskify&Timeline)
+[![Star History Chart](https://api.star-history.com/svg?repos=FoldedOdin/Taskify&type=Timeline)](https://star-history.com/#FoldedOdin/Taskify&Timeline)
 
 ### [📑 Return to Top](#-taskify)
 
