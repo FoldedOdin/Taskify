@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: taskify-api
+    env: node
+    buildCommand: npm install
+    startCommand: npm run start:prod
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001
+      - key: MONGODB_URI
+        fromDatabase:
+          name: taskify-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_URL
+        value: https://your-frontend-domain.com
+      - key: LOG_LEVEL
+        value: warn
+      - key: RATE_LIMIT_WINDOW_MS
+        value: 900000
+      - key: RATE_LIMIT_MAX_REQUESTS
+        value: 100
+
+databases:
+  - name: taskify-db
+    databaseName: taskify
+    user: taskify-user
