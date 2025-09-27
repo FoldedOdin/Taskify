@@ -1,0 +1,182 @@
+name: Dependency Management
+
+on:
+  schedule:
+    # Run weekly on Mondays at 9 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  # Check for security vulnerabilities
+  security-audit:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+
+    - name: Audit frontend dependencies
+      run: |
+        npm audit --audit-level high --json > frontend-audit.json || true
+        
+    - name: Audit backend dependencies
+      run: |
+        cd server
+        npm audit --audit-level high --json > ../backend-audit.json || true
+
+    - name: Check for critical vulnerabilities
+      run: |
+        # Check if there are any critical or high severity vulnerabilities
+        FRONTEND_CRITICAL=$(cat frontend-audit.json | jq '.metadata.vulnerabilities.critical // 0')
+        FRONTEND_HIGH=$(cat frontend-audit.json | jq '.metadata.vulnerabilities.high // 0')
+        BACKEND_CRITICAL=$(cat backend-audit.json | jq '.metadata.vulnerabilities.critical // 0')
+        BACKEND_HIGH=$(cat backend-audit.json | jq '.metadata.vulnerabilities.high // 0')
+        
+        echo "Frontend - Critical: $FRONTEND_CRITICAL, High: $FRONTEND_HIGH"
+        echo "Backend - Critical: $BACKEND_CRITICAL, High: $BACKEND_HIGH"
+        
+        if [ $FRONTEND_CRITICAL -gt 0 ] || [ $FRONTEND_HIGH -gt 0 ] || [ $BACKEND_CRITICAL -gt 0 ] || [ $BACKEND_HIGH -gt 0 ]; then
+          echo "::warning::Security vulnerabilities found!"
+          exit 1
+        fi
+
+    - name: Create issue for vulnerabilities
+      if: failure()
+      uses: actions/github-script@v7
+      with:
+        script: |
+          github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: '🚨 Security Vulnerabilities Detected',
+            body: `Security audit found vulnerabilities in dependencies.
+            
+            Please review and update the affected packages:
+            
+            - Run \`npm audit\` in the root directory for frontend issues
+            - Run \`npm audit\` in the server directory for backend issues
+            - Use \`npm audit fix\` to automatically fix issues where possible
+            
+            **This issue was automatically created by the dependency management workflow.**`,
+            labels: ['security', 'dependencies', 'high-priority']
+          })
+
+  # Update dependencies
+  update-dependencies:
+    name: Update Dependencies
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+
+    - name: Update frontend dependencies
+      run: |
+        npm update
+        npm audit fix --audit-level moderate || true
+
+    - name: Update backend dependencies
+      run: |
+        cd server
+        npm update
+        npm audit fix --audit-level moderate || true
+
+    - name: Run tests after updates
+      run: |
+        npm run test:run
+        cd server
+        npm run test
+      env:
+        NODE_ENV: test
+        MONGODB_URI: mongodb://localhost:27017/test
+        JWT_SECRET: test-secret
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        commit-message: 'chore: update dependencies'
+        title: '🔄 Automated Dependency Updates'
+        body: |
+          This PR contains automated dependency updates.
+          
+          ## Changes
+          - Updated npm dependencies to latest compatible versions
+          - Applied security fixes where available
+          
+          ## Testing
+          - ✅ Frontend tests passed
+          - ✅ Backend tests passed
+          
+          Please review the changes and merge if everything looks good.
+          
+          **This PR was automatically created by the dependency management workflow.**
+        branch: chore/update-dependencies
+        delete-branch: true
+        labels: |
+          dependencies
+          automated
+          maintenance
+
+  # Check for outdated dependencies
+  outdated-check:
+    name: Check Outdated Dependencies
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+
+    - name: Check outdated frontend dependencies
+      run: |
+        npm outdated --json > frontend-outdated.json || true
+
+    - name: Check outdated backend dependencies
+      run: |
+        cd server
+        npm outdated --json > ../backend-outdated.json || true
+
+    - name: Generate outdated report
+      run: |
+        echo "# Outdated Dependencies Report" > outdated-report.md
+        echo "" >> outdated-report.md
+        echo "## Frontend Dependencies" >> outdated-report.md
+        if [ -s frontend-outdated.json ]; then
+          echo "Found outdated frontend dependencies:" >> outdated-report.md
+          cat frontend-outdated.json | jq -r 'to_entries[] | "- \(.key): \(.value.current) → \(.value.latest)"' >> outdated-report.md
+        else
+          echo "All frontend dependencies are up to date! ✅" >> outdated-report.md
+        fi
+        echo "" >> outdated-report.md
+        echo "## Backend Dependencies" >> outdated-report.md
+        if [ -s backend-outdated.json ]; then
+          echo "Found outdated backend dependencies:" >> outdated-report.md
+          cat backend-outdated.json | jq -r 'to_entries[] | "- \(.key): \(.value.current) → \(.value.latest)"' >> outdated-report.md
+        else
+          echo "All backend dependencies are up to date! ✅" >> outdated-report.md
+        fi
+
+    - name: Upload outdated report
+      uses: actions/upload-artifact@v4
+      with:
+        name: outdated-dependencies-report
+        path: outdated-report.md
+        retention-days: 30
