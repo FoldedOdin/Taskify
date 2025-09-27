@@ -1,23 +1,44 @@
 import express from 'express';
+import helmet from 'helmet';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/database.js';
 import todoRoutes from './routes/todos.js';
+import authRoutes from './routes/auth.js';
+import { 
+  validateEnvironment, 
+  createRateLimiter, 
+  createCorsConfig, 
+  helmetConfig, 
+  securityHeaders 
+} from './config/security.js';
 
-// Load environment variables
+// Load environment variables first
 dotenv.config();
 
-// Connect to MongoDB
-connectDB();
+// Validate environment variables before starting
+validateEnvironment();
+
+// Connect to MongoDB (skip in test environment)
+if (process.env.NODE_ENV !== 'test') {
+  connectDB();
+}
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Middleware
-app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
-  credentials: true
-}));
+// Security Middleware (apply early)
+app.use(helmet(helmetConfig));
+app.use(securityHeaders);
+
+// Rate limiting (apply before other middleware)
+if (process.env.NODE_ENV === 'production') {
+  app.use(createRateLimiter());
+}
+
+// CORS configuration
+app.use(cors(createCorsConfig()));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -41,6 +62,7 @@ app.get('/health', (req, res) => {
 
 // API Routes
 app.use('/api/todos', todoRoutes);
+app.use('/api/auth', authRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

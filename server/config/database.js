@@ -2,16 +2,23 @@ import mongoose from 'mongoose';
 
 const connectDB = async () => {
   try {
-    const mongoURI = process.env.MONGODB_URI || 'mongodb+srv://FoldedOdin:TAtiBqjlTU6qNnhr@taskify-dev.iughnvz.mongodb.net/?retryWrites=true&w=majority&appName=taskify-dev';
-    
-    const conn = await mongoose.connect(mongoURI, {
-    });
+    // Require MONGODB_URI environment variable - no fallback for security
+    const mongoURI = process.env.MONGODB_URI;
+
+    if (!mongoURI) {
+      throw new Error(
+        'MONGODB_URI environment variable is required. ' +
+        'Please set it in your .env file or environment variables.'
+      );
+    }
+
+    const conn = await mongoose.connect(mongoURI, {});
 
     console.log(`📦 MongoDB Connected: ${conn.connection.host}`);
     console.log(`🗄️  Database: ${conn.connection.name}`);
-    
+
     // Handle connection events
-    mongoose.connection.on('error', (err) => {
+    mongoose.connection.on('error', err => {
       console.error('❌ MongoDB connection error:', err);
     });
 

@@ -21,6 +21,11 @@ const todoSchema = new mongoose.Schema({
     enum: ['High', 'Medium', 'Low'],
     default: 'Medium'
   },
+  tags: [{
+    type: String,
+    trim: true,
+    maxlength: [50, 'Tag cannot exceed 50 characters']
+  }],
   dueDate: {
     type: Date,
     default: null

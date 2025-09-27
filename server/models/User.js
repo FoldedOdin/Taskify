@@ -36,9 +36,7 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-// Index for better query performance
-userSchema.index({ email: 1 });
-userSchema.index({ username: 1 });
+// Indexes are already created by unique: true in schema definition
 
 // Static method to find user by email or username
 userSchema.statics.findByCredentials = function(identifier) {
