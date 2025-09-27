@@ -33,8 +33,7 @@
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.20.0",
-    "mongoose": "^8.18.0",
-    "node-fetch": "^3.3.2"
+    "mongoose": "^8.18.0"
   },
   "devDependencies": {
     "cross-env": "^10.0.0",

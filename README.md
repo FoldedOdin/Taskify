@@ -2,59 +2,59 @@
 
 A modern, full-stack todo application with comprehensive task management features, built with React, Express.js, and MongoDB.
 
-## ✨ Features
+## Features
 
-###  Core Task Management
-- ✅ **Add Tasks** - Create new tasks with rich details
-- ✅ **Task Completion** - Mark tasks as complete/incomplete with visual feedback
-- ✅ **Delete Tasks** - Remove tasks with confirmation and rollback
-- ✅ **Inline Editing** - Double-click any task to edit text directly
-- ✅ **Task Counter** - Real-time count of active and completed tasks
+### Core Task Management
+- **Add Tasks** - Create new tasks with rich details
+- **Task Completion** - Mark tasks as complete/incomplete with visual feedback
+- **Delete Tasks** - Remove tasks with confirmation and rollback
+- **Inline Editing** - Double-click any task to edit text directly
+- **Task Counter** - Real-time count of active and completed tasks
 
-###  Advanced Scheduling
-- ✅ **Due Date & Time** - Set precise due dates and times with calendar picker
-- ✅ **Smart Time Selection** - 12-hour format with AM/PM selector
-- ✅ **Past Date Prevention** - Prevents setting due dates in the past
-- ✅ **Overdue Indicators** - Visual alerts for overdue tasks
-- ✅ **Due Soon Alerts** - Highlights tasks due within 24 hours
+### Advanced Scheduling
+- **Due Date & Time** - Set precise due dates and times with calendar picker
+- **Smart Time Selection** - 12-hour format with AM/PM selector
+- **Past Date Prevention** - Prevents setting due dates in the past
+- **Overdue Indicators** - Visual alerts for overdue tasks
+- **Due Soon Alerts** - Highlights tasks due within 24 hours
 
-###  Organization & Categorization
-- ✅ **Categories** - Organize tasks by Work, Personal, Shopping, Health
-- ✅ **Priority Levels** - Set High, Medium, or Low priority
-- ✅ **Tags System** - Add custom tags and use predefined quick tags
-- ✅ **Category Filtering** - Filter tasks by category
-- ✅ **Search Functionality** - Search tasks by text content
+### Organization & Categorization
+- **Categories** - Organize tasks by Work, Personal, Shopping, Health
+- **Priority Levels** - Set High, Medium, or Low priority
+- **Tags System** - Add custom tags and use predefined quick tags
+- **Category Filtering** - Filter tasks by category
+- **Search Functionality** - Search tasks by text content
 
-###  User Experience
-- ✅ **Drag & Drop Reordering** - Reorder tasks with intuitive drag and drop
-- ✅ **Dark Mode Support** - Automatic dark/light theme switching
-- ✅ **Responsive Design** - Works perfectly on desktop, tablet, and mobile
-- ✅ **Loading States** - Visual feedback during all operations
-- ✅ **Error Handling** - Graceful error recovery with user-friendly messages
-- ✅ **Optimistic Updates** - Instant UI updates with rollback on failure
+### User Experience
+- **Drag & Drop Reordering** - Reorder tasks with intuitive drag and drop
+- **Dark Mode Support** - Automatic dark/light theme switching
+- **Responsive Design** - Works perfectly on desktop, tablet, and mobile
+- **Loading States** - Visual feedback during all operations
+- **Error Handling** - Graceful error recovery with user-friendly messages
+- **Optimistic Updates** - Instant UI updates with rollback on failure
 
-###  Security & Authentication
-- ✅ **User Authentication** - Secure login and registration system
-- ✅ **JWT Tokens** - Secure session management
-- ✅ **Protected Routes** - User-specific task access
-- ✅ **Password Security** - Bcrypt password hashing
-- ✅ **Rate Limiting** - API protection against abuse
-- ✅ **Security Headers** - Comprehensive security middleware
+### Security & Authentication
+- **User Authentication** - Secure login and registration system
+- **JWT Tokens** - Secure session management
+- **Protected Routes** - User-specific task access
+- **Password Security** - Bcrypt password hashing
+- **Rate Limiting** - API protection against abuse
+- **Security Headers** - Comprehensive security middleware
 
-###  Performance & Reliability
-- ✅ **Real-time Updates** - Instant synchronization across devices
-- ✅ **Offline Support** - Works with limited connectivity
-- ✅ **Retry Mechanisms** - Automatic retry for failed operations
-- ✅ **Performance Monitoring** - Built-in performance tracking
-- ✅ **Error Boundaries** - Prevents crashes from component errors
-- ✅ **Memory Management** - Efficient state management and cleanup
+### Performance & Reliability
+- **Real-time Updates** - Instant synchronization across devices
+- **Offline Support** - Works with limited connectivity
+- **Retry Mechanisms** - Automatic retry for failed operations
+- **Performance Monitoring** - Built-in performance tracking
+- **Error Boundaries** - Prevents crashes from component errors
+- **Memory Management** - Efficient state management and cleanup
 
-###  Quality Assurance
-- ✅ **Comprehensive Testing** - Unit, integration, and E2E tests
-- ✅ **Type Safety** - PropTypes validation for components
-- ✅ **Code Quality** - ESLint and Prettier configuration
-- ✅ **Security Auditing** - Automated vulnerability scanning
-- ✅ **Performance Testing** - Load testing and optimization
+### Quality Assurance
+- **Comprehensive Testing** - Unit, integration, and E2E tests
+- **Type Safety** - PropTypes validation for components
+- **Code Quality** - ESLint and Prettier configuration
+- **Security Auditing** - Automated vulnerability scanning
+- **Performance Testing** - Load testing and optimization
 
 ## Getting Started
 
@@ -88,7 +88,7 @@ npm run dev
 - `npm run format` - Format code with Prettier
 - `npm run format:check` - Check code formatting
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 - **React 19** - Latest React with concurrent features
@@ -113,7 +113,7 @@ npm run dev
 - **Supertest** - HTTP assertion library for API testing
 - **Nodemon** - Development server with auto-restart
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Taskify/
@@ -167,7 +167,7 @@ Taskify/
 └── README.md               # This file
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 - **Node.js** (v16 or higher)
@@ -217,7 +217,7 @@ Taskify/
    - Frontend: http://localhost:5174
    - Backend API: http://localhost:3001
 
-### 🔧 Available Scripts
+### Available Scripts
 
 #### Frontend Scripts
 ```bash
@@ -240,7 +240,7 @@ npm run security:check   # Run security validation
 npm run security:audit   # Check for vulnerabilities
 ```
 
-## 🔒 Security Features
+## Security Features
 
 ### Production Security
 - **Environment Variable Validation** - Ensures secure configuration
