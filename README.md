@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📋 TASKIFY
+# TASKIFY
 
 **Transform Tasks Into Triumphs Every Day**
 
