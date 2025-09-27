@@ -313,8 +313,6 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE.m
 
 <div align="center">
 
-[![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
-
 </div>
 
 ## 🙏 Acknowledgments
