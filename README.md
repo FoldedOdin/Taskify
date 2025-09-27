@@ -252,7 +252,7 @@ npm run test:watch
 ## 🚀 Deployment
 
 ### Frontend Deployment
-[![Netlify Status](https://img.shields.io/badge/Netlify-Ready-00C7B7?logo=netlify&logoColor=white)](https://netlify.com)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a423929a-cca1-47d0-bead-ebb0e5042178/deploy-status)](https://app.netlify.com/projects/taskify-todo-list/deploys)
 [![Vercel Status](https://img.shields.io/badge/Vercel-Ready-000000?logo=vercel&logoColor=white)](https://vercel.com)
 
 ### Backend Deployment
