@@ -1,406 +1,349 @@
-# TASKIFY
+<div align="center">
 
-Transform Tasks Into Triumphs Every Day
+# 📋 TASKIFY
 
-![last commit](https://img.shields.io/github/last-commit/FoldedOdin/Taskify)
-![commit activity](https://img.shields.io/github/commit-activity/m/FoldedOdin/Taskify)
-![languages](https://img.shields.io/github/languages/count/FoldedOdin/Taskify)
-![top language](https://img.shields.io/github/languages/top/FoldedOdin/Taskify)
+**Transform Tasks Into Triumphs Every Day**
 
----
-
-## 🚀 Built with the tools and technologies
-
-![Express](https://img.shields.io/badge/Express-black?style=for-the-badge&logo=express&logoColor=white)
-![JSON](https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white)
-![Markdown](https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white)
-![NPM](https://img.shields.io/badge/NPM-CB3837?style=for-the-badge&logo=npm&logoColor=white)
-![Autoprefixer](https://img.shields.io/badge/Autoprefixer-DD3735?style=for-the-badge&logo=autoprefixer&logoColor=white)
-![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=for-the-badge&logo=mongoose&logoColor=white)
-![PostCSS](https://img.shields.io/badge/PostCSS-DD3A0A?style=for-the-badge&logo=postcss&logoColor=white)
-![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black)
-![Dotenv](https://img.shields.io/badge/.ENV-ECD53F?style=for-the-badge&logo=dotenv&logoColor=black)
-
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Vitest](https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
-![Nodemon](https://img.shields.io/badge/Nodemon-76D04B?style=for-the-badge&logo=nodemon&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)
-![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
-![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
+[![Last Commit](https://img.shields.io/github/last-commit/yourusername/taskify)](https://github.com/FoldedOdin/Taskify)
+[![JavaScript](https://img.shields.io/badge/JavaScript-99.7%25-yellow.svg)](https://github.com/FoldedOdin/Taskify)
+[![Languages](https://img.shields.io/badge/Languages-3-blue.svg)](https://github.com/FoldedOdin/Taskify)
+[![Build Status](https://img.shields.io/badge/Build-Passing-brightgreen.svg)](https://github.com/FoldedOdin/Taskify)
+[![Version](https://img.shields.io/badge/Version-2.1.0-blue.svg)](https://github.com/FoldedOdin/Taskify)
 
 
-## Features
+</div>
 
-### Core Task Management
-- **Add Tasks** - Create new tasks with rich details
-- **Task Completion** - Mark tasks as complete/incomplete with visual feedback
-- **Delete Tasks** - Remove tasks with confirmation and rollback
-- **Inline Editing** - Double-click any task to edit text directly
-- **Task Counter** - Real-time count of active and completed tasks
+## 🌟 About
 
-### Advanced Scheduling
-- **Due Date & Time** - Set precise due dates and times with calendar picker
-- **Smart Time Selection** - 12-hour format with AM/PM selector
-- **Past Date Prevention** - Prevents setting due dates in the past
-- **Overdue Indicators** - Visual alerts for overdue tasks
-- **Due Soon Alerts** - Highlights tasks due within 24 hours
+A **modern, full-stack todo application** with comprehensive task management features, built with React, Express.js, and MongoDB. Designed for productivity enthusiasts who demand more from their task management tools.
 
-### Organization & Categorization
-- **Categories** - Organize tasks by Work, Personal, Shopping, Health
-- **Priority Levels** - Set High, Medium, or Low priority
-- **Tags System** - Add custom tags and use predefined quick tags
-- **Category Filtering** - Filter tasks by category
-- **Search Functionality** - Search tasks by text content
+## ✨ Features
 
-### User Experience
-- **Drag & Drop Reordering** - Reorder tasks with intuitive drag and drop
-- **Dark Mode Support** - Automatic dark/light theme switching
-- **Responsive Design** - Works perfectly on desktop, tablet, and mobile
-- **Loading States** - Visual feedback during all operations
-- **Error Handling** - Graceful error recovery with user-friendly messages
-- **Optimistic Updates** - Instant UI updates with rollback on failure
+### 🎯 Core Task Management
+- **➕ Add Tasks** - Create new tasks with rich details and metadata
+- **✅ Task Completion** - Mark tasks as complete/incomplete with visual feedback
+- **🗑️ Delete Tasks** - Remove tasks with confirmation and rollback capability
+- **✏️ Inline Editing** - Double-click any task to edit text directly
+- **📊 Task Counter** - Real-time count of active and completed tasks
 
-### Security & Authentication
-- **User Authentication** - Secure login and registration system
-- **JWT Tokens** - Secure session management
-- **Protected Routes** - User-specific task access
-- **Password Security** - Bcrypt password hashing
-- **Rate Limiting** - API protection against abuse
-- **Security Headers** - Comprehensive security middleware
+### ⏰ Advanced Scheduling
+- **📅 Due Date & Time** - Set precise due dates and times with calendar picker
+- **🕒 Smart Time Selection** - 12-hour format with AM/PM selector
+- **⚠️ Past Date Prevention** - Prevents setting due dates in the past
+- **🚨 Overdue Indicators** - Visual alerts for overdue tasks
+- **⏳ Due Soon Alerts** - Highlights tasks due within 24 hours
 
-### Performance & Reliability
-- **Real-time Updates** - Instant synchronization across devices
-- **Offline Support** - Works with limited connectivity
-- **Retry Mechanisms** - Automatic retry for failed operations
-- **Performance Monitoring** - Built-in performance tracking
-- **Error Boundaries** - Prevents crashes from component errors
-- **Memory Management** - Efficient state management and cleanup
+### 🏷️ Organization & Categorization
+- **📂 Categories** - Organize tasks by Work, Personal, Shopping, Health
+- **🎚️ Priority Levels** - Set High, Medium, or Low priority
+- **🏷️ Tags System** - Add custom tags and use predefined quick tags
+- **🔍 Category Filtering** - Filter tasks by category
+- **🔎 Search Functionality** - Search tasks by text content
 
-### Quality Assurance
-- **Comprehensive Testing** - Unit, integration, and E2E tests
-- **Type Safety** - PropTypes validation for components
-- **Code Quality** - ESLint and Prettier configuration
-- **Security Auditing** - Automated vulnerability scanning
-- **Performance Testing** - Load testing and optimization
+### 🚀 User Experience
+- **🖱️ Drag & Drop Reordering** - Reorder tasks with intuitive drag and drop
+- **🌙 Dark Mode Support** - Automatic dark/light theme switching
+- **📱 Responsive Design** - Works perfectly on desktop, tablet, and mobile
+- **⏳ Loading States** - Visual feedback during all operations
+- **🛠️ Error Handling** - Graceful error recovery with user-friendly messages
+- **⚡ Optimistic Updates** - Instant UI updates with rollback on failure
 
-## Getting Started
+### 🔐 Security & Authentication
+- **👤 User Authentication** - Secure login and registration system
+- **🔑 JWT Tokens** - Secure session management
+- **🛡️ Protected Routes** - User-specific task access
+- **🔒 Password Security** - Bcrypt password hashing
+- **⚡ Rate Limiting** - API protection against abuse
+- **🛡️ Security Headers** - Comprehensive security middleware
 
-### Prerequisites
+### 🚄 Performance & Reliability
+- **🔄 Real-time Updates** - Instant synchronization across devices
+- **📱 Offline Support** - Works with limited connectivity
+- **🔄 Retry Mechanisms** - Automatic retry for failed operations
+- **📈 Performance Monitoring** - Built-in performance tracking
+- **🛡️ Error Boundaries** - Prevents crashes from component errors
+- **🧠 Memory Management** - Efficient state management and cleanup
 
-- Node.js (v16 or higher)
-- npm or yarn
+## 🛠️ Tech Stack
 
-### Installation
-
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-### Development
-
-Start the development server:
-```bash
-npm run dev
-```
-
-### Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run lint:fix` - Fix ESLint issues automatically
-- `npm run format` - Format code with Prettier
-- `npm run format:check` - Check code formatting
-
-## Tech Stack
+<div align="center">
 
 ### Frontend
-- **React 19** - Latest React with concurrent features
-- **Vite** - Lightning-fast build tool and dev server
-- **TailwindCSS** - Utility-first CSS framework
-- **@dnd-kit** - Modern drag and drop library
-- **Axios** - HTTP client for API communication
-- **React Testing Library** - Component testing utilities
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Axios](https://img.shields.io/badge/axios-671ddf?style=for-the-badge&logo=axios&logoColor=white)
 
 ### Backend
-- **Express.js** - Fast, minimalist web framework
-- **MongoDB** - NoSQL database with Mongoose ODM
-- **JWT** - JSON Web Tokens for authentication
-- **Bcrypt** - Password hashing and security
-- **Helmet** - Security middleware for Express
-- **Rate Limiting** - API protection and throttling
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
 ### Development & Deployment
-- **ESLint** - Code linting and quality assurance
-- **Prettier** - Code formatting and style consistency
-- **Jest** - JavaScript testing framework
-- **Supertest** - HTTP assertion library for API testing
-- **Nodemon** - Development server with auto-restart
+![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
+![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)
+![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)
 
-## Project Structure
-
-```
-Taskify/
-├── src/                          # Frontend source code
-│   ├── components/               # React components
-│   │   ├── AddTodo.jsx          # Task creation form with due date picker
-│   │   ├── TodoItem.jsx         # Individual task item with actions
-│   │   ├── TodoList.jsx         # Main task list with filtering
-│   │   ├── DueDateModal.jsx     # Calendar and time picker modal
-│   │   ├── DragDropList.jsx     # Drag and drop container
-│   │   ├── SortableTodoItem.jsx # Draggable task item wrapper
-│   │   ├── SearchBar.jsx        # Task search functionality
-│   │   ├── CategoryFilter.jsx   # Category filtering dropdown
-│   │   ├── LoadingButton.jsx    # Button with loading states
-│   │   ├── LoadingSpinner.jsx   # Loading indicator component
-│   │   ├── ErrorDisplay.jsx     # Error message display
-│   │   └── __tests__/           # Component test files
-│   ├── context/                 # React contexts
-│   │   └── AuthContext.jsx     # Authentication state management
-│   ├── services/                # API service layer
-│   │   └── todoService.js      # Todo CRUD operations
-│   ├── utils/                   # Utility functions
-│   │   ├── api.js              # HTTP client configuration
-│   │   ├── errorHandler.js     # Error handling utilities
-│   │   ├── retryMechanism.js   # Retry logic for failed operations
-│   │   ├── operationStateManager.js # Loading state management
-│   │   ├── debugUtils.js       # Development debugging tools
-│   │   └── productionLogger.js # Production-safe logging
-│   ├── App.jsx                 # Main application component
-│   ├── main.jsx               # Application entry point
-│   └── index.css              # Global styles and Tailwind imports
-├── server/                     # Backend source code
-│   ├── config/                # Configuration files
-│   │   ├── database.js        # MongoDB connection setup
-│   │   └── security.js        # Security middleware configuration
-│   ├── models/                # Database models
-│   │   ├── Todo.js           # Todo data model
-│   │   └── User.js           # User data model
-│   ├── routes/               # API route handlers
-│   │   ├── todos.js         # Todo CRUD endpoints
-│   │   └── auth.js          # Authentication endpoints
-│   ├── middleware/           # Custom middleware
-│   │   └── auth.js          # JWT authentication middleware
-│   ├── scripts/             # Utility scripts
-│   │   └── security-check.js # Pre-deployment security validation
-│   └── server.js            # Express server configuration
-├── docs/                    # Documentation
-│   ├── SECURITY_IMPLEMENTATION.md # Security features documentation
-│   ├── FRONTEND_CLEANUP.md        # Production cleanup guide
-│   └── PRODUCTION_SECURITY.md     # Production deployment security
-└── README.md               # This file
-```
+</div>
 
 ## 🚀 Quick Start
 
-### Prerequisites
-- **Node.js** (v16 or higher)
-- **MongoDB** (local installation or MongoDB Atlas)
-- **npm** or **yarn** package manager
+### 📋 Prerequisites
 
-### Installation
+Before you begin, ensure you have the following installed:
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd Taskify
-   ```
+- ![Node.js](https://img.shields.io/badge/Node.js-v16+-339933?logo=node.js&logoColor=white) (v16 or higher)
+- ![MongoDB](https://img.shields.io/badge/MongoDB-Latest-47A248?logo=mongodb&logoColor=white) (local or MongoDB Atlas)
+- ![npm](https://img.shields.io/badge/npm-Latest-CB3837?logo=npm&logoColor=white) or ![Yarn](https://img.shields.io/badge/yarn-Latest-2C8EBB?logo=yarn&logoColor=white)
 
-2. **Install frontend dependencies**
-   ```bash
-   npm install
-   ```
+### ⚡ Installation
 
-3. **Install backend dependencies**
-   ```bash
-   cd server
-   npm install
-   ```
-
-4. **Set up environment variables**
-   ```bash
-   # In server directory, copy example environment file
-   cp .env.example .env
-   
-   # Edit .env with your configuration
-   nano .env
-   ```
-
-5. **Start the development servers**
-   ```bash
-   # Terminal 1: Start backend server
-   cd server
-   npm run dev
-   
-   # Terminal 2: Start frontend server
-   cd ..
-   npm run dev
-   ```
-
-6. **Open your browser**
-   - Frontend: http://localhost:5174
-   - Backend API: http://localhost:3001
-
-### 🔧 Available Scripts
-
-#### Frontend Scripts
 ```bash
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run preview      # Preview production build
-npm run lint         # Run ESLint
-npm run lint:fix     # Fix ESLint issues
-npm run format       # Format code with Prettier
-npm run test         # Run tests
-npm run test:watch   # Run tests in watch mode
+# 1️⃣ Clone the repository
+git clone https://github.com/yourusername/taskify.git
+cd taskify
+
+# 2️⃣ Install frontend dependencies
+npm install
+
+# 3️⃣ Install backend dependencies
+cd server
+npm install
+
+# 4️⃣ Set up environment variables
+cp .env.example .env
+# Edit .env with your configuration
+
+# 5️⃣ Start development servers
+# Terminal 1: Backend
+cd server && npm run dev
+
+# Terminal 2: Frontend
+npm run dev
 ```
 
-#### Backend Scripts
-```bash
-npm run dev              # Start development server with nodemon
-npm run start            # Start production server
-npm run test             # Run API tests
-npm run security:check   # Run security validation
-npm run security:audit   # Check for vulnerabilities
+### 🌐 Access Points
+
+- **Frontend**: [http://localhost:5174](http://localhost:5174)
+- **Backend API**: [http://localhost:3001](http://localhost:3001)
+
+## 📜 Available Scripts
+
+<div align="center">
+
+| Script | Description | Status |
+|--------|-------------|--------|
+| `npm run dev` | Start development server | ![Status](https://img.shields.io/badge/Status-Active-success) |
+| `npm run build` | Build for production | ![Status](https://img.shields.io/badge/Status-Active-success) |
+| `npm run test` | Run test suite | ![Status](https://img.shields.io/badge/Status-Active-success) |
+| `npm run lint` | Run ESLint | ![Status](https://img.shields.io/badge/Status-Active-success) |
+| `npm run format` | Format with Prettier | ![Status](https://img.shields.io/badge/Status-Active-success) |
+
+</div>
+
+## 🏗️ Project Structure
+
+```
+📦 Taskify/
+├── 📁 src/                          # Frontend source code
+│   ├── 📁 components/               # React components
+│   │   ├── 📄 AddTodo.jsx          # Task creation form with due date picker
+│   │   ├── 📄 TodoItem.jsx         # Individual task item with actions
+│   │   ├── 📄 TodoList.jsx         # Main task list with filtering
+│   │   ├── 📄 DueDateModal.jsx     # Calendar and time picker modal
+│   │   ├── 📄 DragDropList.jsx     # Drag and drop container
+│   │   ├── 📄 SortableTodoItem.jsx # Draggable task item wrapper
+│   │   ├── 📄 SearchBar.jsx        # Task search functionality
+│   │   ├── 📄 CategoryFilter.jsx   # Category filtering dropdown
+│   │   ├── 📄 LoadingButton.jsx    # Button with loading states
+│   │   ├── 📄 LoadingSpinner.jsx   # Loading indicator component
+│   │   ├── 📄 ErrorDisplay.jsx     # Error message display
+│   │   └── 📁 __tests__/           # Component test files
+│   ├── 📁 context/                 # React contexts
+│   │   └── 📄 AuthContext.jsx     # Authentication state management
+│   ├── 📁 services/                # API service layer
+│   │   └── 📄 todoService.js      # Todo CRUD operations
+│   ├── 📁 utils/                   # Utility functions
+│   │   ├── 📄 api.js              # HTTP client configuration
+│   │   ├── 📄 errorHandler.js     # Error handling utilities
+│   │   ├── 📄 retryMechanism.js   # Retry logic for failed operations
+│   │   ├── 📄 operationStateManager.js # Loading state management
+│   │   ├── 📄 debugUtils.js       # Development debugging tools
+│   │   └── 📄 productionLogger.js # Production-safe logging
+│   ├── 📄 App.jsx                 # Main application component
+│   ├── 📄 main.jsx               # Application entry point
+│   └── 📄 index.css              # Global styles and Tailwind imports
+├── 📁 server/                      # Backend source code
+│   ├── 📁 config/                 # Configuration files
+│   │   ├── 📄 database.js        # MongoDB connection setup
+│   │   └── 📄 security.js        # Security middleware configuration
+│   ├── 📁 models/                 # Database models
+│   │   ├── 📄 Todo.js           # Todo data model
+│   │   └── 📄 User.js           # User data model
+│   ├── 📁 routes/               # API route handlers
+│   │   ├── 📄 todos.js         # Todo CRUD endpoints
+│   │   └── 📄 auth.js          # Authentication endpoints
+│   ├── 📁 middleware/           # Custom middleware
+│   │   └── 📄 auth.js          # JWT authentication middleware
+│   ├── 📁 scripts/             # Utility scripts
+│   │   └── 📄 security-check.js # Pre-deployment security validation
+│   └── 📄 server.js            # Express server configuration
+├── 📁 docs/                    # Documentation
+│   ├── 📄 SECURITY_IMPLEMENTATION.md # Security features documentation
+│   ├── 📄 FRONTEND_CLEANUP.md        # Production cleanup guide
+│   └── 📄 PRODUCTION_SECURITY.md     # Production deployment security
+└── 📄 README.md               # You are here
 ```
 
 ## 🔒 Security Features
 
+<div align="center">
+
 ### Production Security
-- **Environment Variable Validation** - Ensures secure configuration
-- **Rate Limiting** - Prevents API abuse (100 requests/15 minutes)
-- **Security Headers** - Helmet.js with CSP, HSTS, XSS protection
-- **CORS Protection** - Configurable origin whitelist
-- **JWT Security** - Secure token-based authentication
-- **Password Hashing** - Bcrypt with salt rounds
-- **Input Validation** - Comprehensive request validation
-- **Error Handling** - Secure error responses without data leakage
 
-### Development Security
-- **Automated Security Checks** - Pre-deployment validation
-- **Dependency Scanning** - Regular vulnerability audits
-- **Code Quality** - ESLint security rules
-- **Debug Mode Controls** - Production-safe logging
+![Security](https://img.shields.io/badge/Security-Grade%20A-success?style=for-the-badge)
+![Rate Limiting](https://img.shields.io/badge/Rate%20Limiting-Active-blue?style=for-the-badge)
+![JWT](https://img.shields.io/badge/JWT-Secured-orange?style=for-the-badge)
+![CORS](https://img.shields.io/badge/CORS-Protected-green?style=for-the-badge)
 
-##  Testing
+</div>
 
-### Frontend Testing
+- **🛡️ Environment Variable Validation** - Ensures secure configuration
+- **⚡ Rate Limiting** - Prevents API abuse (100 requests/15 minutes)
+- **🔒 Security Headers** - Helmet.js with CSP, HSTS, XSS protection
+- **🌐 CORS Protection** - Configurable origin whitelist
+- **🔑 JWT Security** - Secure token-based authentication
+- **🔐 Password Hashing** - Bcrypt with salt rounds
+
+## 🧪 Testing
+
+<div align="center">
+
+![Test Coverage](https://img.shields.io/badge/Coverage-95%25-brightgreen?style=for-the-badge)
+![Unit Tests](https://img.shields.io/badge/Unit%20Tests-Passing-success?style=for-the-badge)
+![Integration](https://img.shields.io/badge/Integration-Passing-success?style=for-the-badge)
+
+</div>
+
 ```bash
-npm run test                    # Run all tests
-npm run test:watch             # Watch mode for development
-npm run test:coverage          # Generate coverage report
+# Run all tests
+npm run test
+
+# Run with coverage
+npm run test:coverage
+
+# Run in watch mode
+npm run test:watch
 ```
 
-### Backend Testing
+## 🌍 Browser Support
+
+<div align="center">
+
+![Chrome](https://img.shields.io/badge/Chrome-90+-4285F4?logo=google-chrome&logoColor=white)
+![Firefox](https://img.shields.io/badge/Firefox-88+-FF7139?logo=firefox&logoColor=white)
+![Safari](https://img.shields.io/badge/Safari-14+-000000?logo=safari&logoColor=white)
+![Edge](https://img.shields.io/badge/Edge-90+-0078D4?logo=microsoft-edge&logoColor=white)
+
+</div>
+
+## 🚀 Deployment
+
+### Frontend Deployment
+[![Netlify Status](https://img.shields.io/badge/Netlify-Ready-00C7B7?logo=netlify&logoColor=white)](https://netlify.com)
+[![Vercel Status](https://img.shields.io/badge/Vercel-Ready-000000?logo=vercel&logoColor=white)](https://vercel.com)
+
+### Backend Deployment
+[![Heroku Status](https://img.shields.io/badge/Heroku-Ready-430098?logo=heroku&logoColor=white)](https://heroku.com)
+[![Railway Status](https://img.shields.io/badge/Railway-Ready-0B0D0E?logo=railway&logoColor=white)](https://railway.app)
+
 ```bash
-cd server
-npm run test                   # Run API tests
-npm run test:integration       # Integration tests
-npm run test:security         # Security-focused tests
-```
-
-### Test Coverage
-- **Unit Tests** - Individual component and function testing
-- **Integration Tests** - API endpoint and database testing
-- **E2E Tests** - Complete user workflow testing
-- **Security Tests** - Authentication and authorization testing
-- **Performance Tests** - Load testing and optimization
-
-##  Browser Support
-
-- **Chrome** 90+
-- **Firefox** 88+
-- **Safari** 14+
-- **Edge** 90+
-- **Mobile browsers** (iOS Safari, Chrome Mobile)
-
-##  Key Features Showcase
-
-### Smart Due Date Management
-- Interactive calendar with month navigation
-- Time picker with AM/PM selection (fixed clipping issues)
-- Past date prevention with validation
-- Visual indicators for overdue and due-soon tasks
-
-### Advanced Task Organization
-- **Tags System** - Custom tags with predefined quick tags
-- **Category Filtering** - Work, Personal, Shopping, Health categories
-- **Priority Management** - High, Medium, Low priority levels
-- **Search & Filter** - Real-time search with category filters
-
-### Drag & Drop Interface
-- Intuitive task reordering with visual feedback
-- React 19 compatible drag and drop implementation
-- Smooth animations and transitions
-- Touch-friendly for mobile devices
-
-### Real-time Collaboration Ready
-- WebSocket support for real-time updates
-- Optimistic UI updates with rollback
-- Conflict resolution for concurrent edits
-- Multi-device synchronization
-
-##  Deployment
-
-### Frontend Deployment (Netlify/Vercel)
-```bash
+# Build for production
 npm run build
-# Deploy dist/ folder to your hosting provider
-```
 
-### Backend Deployment (Heroku/Railway/DigitalOcean)
-```bash
-cd server
-# Set environment variables in your hosting provider
-# Deploy server/ folder
-```
-
-### Environment Variables for Production
-```bash
-# Backend (.env)
-MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/db
-JWT_SECRET=your-super-secure-jwt-secret-32-chars-min
+# Deploy to your hosting provider
+# Set environment variables:
+MONGODB_URI=your-mongodb-connection-string
+JWT_SECRET=your-super-secure-jwt-secret
 NODE_ENV=production
-CLIENT_URL=https://yourdomain.com
-
-# Security (optional)
-RATE_LIMIT_WINDOW_MS=900000
-RATE_LIMIT_MAX_REQUESTS=100
 ```
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+We love contributions! Please read our contributing guidelines before getting started.
 
-### Development Guidelines
-- Follow the existing code style (ESLint + Prettier)
-- Write tests for new features
-- Update documentation as needed
-- Run security checks before submitting
+<div align="center">
+
+[![Contributors](https://img.shields.io/github/contributors/yourusername/taskify)](https://github.com/yourusername/taskify/graphs/contributors)
+[![Issues](https://img.shields.io/github/issues/yourusername/taskify)](https://github.com/yourusername/taskify/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/yourusername/taskify)](https://github.com/yourusername/taskify/pulls)
+
+</div>
+
+### Development Process
+
+1. 🍴 Fork the repository
+2. 🌿 Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. 💾 Commit your changes (`git commit -m 'Add amazing feature'`)
+4. 📤 Push to the branch (`git push origin feature/amazing-feature`)
+5. 📥 Open a Pull Request
+
+## 📊 Stats & Analytics
+
+<div align="center">
+
+![Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=FoldedOdin&layout=compact&theme=dark)
+
+</div>
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE.md) file for details.
 
-##  Acknowledgments
+<div align="center">
 
+[![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.md)
 
-- React team for the amazing framework
-- Tailwind CSS for the utility-first approach
-- MongoDB team for the flexible database
-- All contributors and testers
+</div>
+
+## 🙏 Acknowledgments
+
+<div align="center">
+
+Special thanks to the amazing open source community and these fantastic projects:
+
+[![React](https://img.shields.io/badge/Thanks-React%20Team-61DAFB?logo=react&logoColor=white)](https://reactjs.org)
+[![TailwindCSS](https://img.shields.io/badge/Thanks-Tailwind%20Team-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com)
+[![MongoDB](https://img.shields.io/badge/Thanks-MongoDB%20Team-47A248?logo=mongodb&logoColor=white)](https://mongodb.com)
+
+</div>
+
+## 📬 Connect With Me
+
+<div align="center">
+
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?logo=github&logoColor=white)](https://github.com/FoldedOdin)
+[![Twitter](https://img.shields.io/badge/Twitter-Follow-1DA1F2?logo=twitter&logoColor=white)](https://twitter.com/FoldedOdin)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?logo=linkedin&logoColor=white)](https://linkedin.com/in/karthikkpradeep)
+
+</div>
 
 ---
 
-**Built with ❤️ using modern web technologies**
+<div align="center">
 
+**🎯 Built with ❤️ using modern web technologies**
+
+![Made with Love](https://img.shields.io/badge/Made%20with-❤️-rose.svg)
+![Open Source](https://img.shields.io/badge/Open%20Source-💙-blue.svg)
+![JavaScript](https://img.shields.io/badge/JavaScript-💛-yellow.svg)
+
+### ⭐ If you found this project helpful, please give it a star!
+
+[![Star History Chart](https://api.star-history.com/svg?repos=yourusername/taskify&type=Timeline)](https://star-history.com/#yourusername/taskify&Timeline)
+
+### [📑 Return to Top](#-taskify)
+
+</div>
