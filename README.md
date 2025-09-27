@@ -256,7 +256,7 @@ npm run test:watch
 [![Vercel Status](https://img.shields.io/badge/Vercel-Ready-000000?logo=vercel&logoColor=white)](https://vercel.com)
 
 ### Backend Deployment
-[![Render Status](https://img.shields.io/badge/Render-Ready-46E3B7?style=for-the-badge&logo=render&logoColor=white)](https://render.com)
+[![Render Status](https://img.shields.io/badge/Render-Ready-46E3B7?style=for-the-badge&logo=render&logoColor=white)]([https://render.com](https://taskify-vn8t.onrender.com))
 
 ```bash
 # Build for production
