@@ -36,6 +36,7 @@ async function initializeServer() {
 }
 
 const app = express();
+const PORT = process.env.PORT || 3001;
 const trustProxy = process.env.TRUST_PROXY || (process.env.NODE_ENV === 'production' ? '1' : 'true');
 app.set('trust proxy', trustProxy);
 
