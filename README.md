@@ -25,11 +25,6 @@
 
 ---
 
-### 🚀 **Ready to Try It Yourself?**
-
-[![Launch Live App](https://img.shields.io/badge/🚀%20Launch%20Live%20App-taskify--todo--list.netlify.app-success?style=for-the-badge&logo=rocket)](https://taskify-todo-list.netlify.app)
-
-</div>
 
 ## 🌟 About
 
@@ -265,14 +260,6 @@ npm run test:watch
 ![Edge](https://img.shields.io/badge/Edge-90+-0078D4?logo=microsoft-edge&logoColor=white)
 
 </div>
-
-## 🚀 Deployment
-
-### Frontend Deployment
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a423929a-cca1-47d0-bead-ebb0e5042178/deploy-status)](https://app.netlify.com/projects/taskify-todo-list/deploys)
-
-### Backend Deployment
-[![Render Status](https://img.shields.io/badge/Render-Ready-46E3B7?style=for-the-badge&logo=render&logoColor=white)]([https://render.com](https://taskify-vn8t.onrender.com))
 
 ```bash
 # Build for production
