@@ -300,11 +300,7 @@ If you suspect a security breach:
 - [OWASP ZAP](https://www.zaproxy.org/) - Web application security scanner
 - [Helmet.js](https://helmetjs.github.io/) - Express.js security middleware
 
-## Updates and Maintenance
 
-This security policy is reviewed and updated regularly to address new threats and vulnerabilities. Last updated: December 2024.
-
-For questions about this security policy, please contact the security team at [security@taskify.com].
 
 ---
 
