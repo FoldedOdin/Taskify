@@ -24,7 +24,7 @@
 *🎥 Click above to watch the full demo on YouTube*
 
 ---
-
+</div>
 
 ## 🌟 About
 
