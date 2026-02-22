@@ -8,8 +8,30 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+    scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 * {
   box-sizing: border-box;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+.App {
+  /* 1. This makes the container a fixed height */
+  height: 100vh; 
+  
+  /* 2. This tells the browser to add a scrollbar if content overflows */
+  overflow-y: auto; 
+
+  /* --- Your scrollbar-hiding styles --- */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+/* For Chrome, Safari, and other Webkit browsers */
+.App::-webkit-scrollbar {
+  display: none;
 }
